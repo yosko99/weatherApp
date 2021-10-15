@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital@0;1&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito", sans-serif;
+  color: white;
+}
+
+.bg-image {
+  height: 100vh;
+  width: 100vw;
+  position: absolute !important;
+  background-image: url("../img/background.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.date-time {
+  padding: 5% 0 0 5%;
+  p {
+    font-size: 3em;
+  }
+}
+
+.weather {
+  padding: 5% 5% 0 0;
+
+  p {
+    text-align: right;
+    font-size: 3em;
+  }
+}
+
+.weather,
+.date-time {
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.search-click {
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  margin-top: 0.5em;
+  border: 1px solid #ccc;
+  color: black;
+  outline: none;
+  background-size: 22px;
+  background-position: 13px;
+  border-radius: 10px;
+  width: 200px;
+  height: 50px;
+  padding: 25px;
+  transition: all 0.5s;
+  font-size: 1em;
+}
+.search-click:focus {
+  width: 300px;
+  padding-left: 50px;
+}
+
+#dailyWeatherHolder {
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  display: grid;
+  margin-top: 25em;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  padding: 0 5% 0 5%;
+
+  .dailyWeather {
+    padding: 1em;
+    transition: all 0.2s ease-in-out;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  .dailyWeather :hover {
+    zoom: 5%;
+  }
+
+  .dailyWeatherTime {
+    font-size: 1em;
+    padding-bottom: 1em;
+  }
+
+  .dailyWeatherTemp {
+    font-size: 3.5em;
+  }
+
+  .dailyWeatherFeelLikeTemp {
+    font-size: 1.5em;
+  }
+
+  .dailyWeather:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+}
