@@ -7,15 +7,25 @@ const searchInput = document.querySelector(".search-click");
 
 
 const setWeather = (address = "sofia") => {
+    weatherInfoHTML.innerHTML = "Fetching..."
+
+    //Fetche requested weather from openWeatherMap
     fetch(`/weather?address=${address}`).then((response) => {
         const contentType = response.headers.get("content-type");
+
+        //Checks if response has JSON body if true imports weather
         if (contentType && contentType.indexOf("application/json") !== -1) {
             return response.json().then(body => {
+
+                //Deconstruct response variables
                 const { current: { temp: currentTemp } } = body;
                 const { current: { feels_like: feelsLikeTemp } } = body;
                 const { current: { weather: [{ main: weatherNow }] } } = body;
 
-                weatherInfoHTML.innerHTML = weatherNow;
+                //Capitalise city
+                let firstLetterOfCity = address.charAt(0);
+                address = `${firstLetterOfCity.toUpperCase()}${address.substring(1, address.length)}`
+                weatherInfoHTML.innerHTML = `Weather in ${address}, ${weatherNow}`;
                 tempHTML.innerHTML = `${currentTemp.toFixed(0)} °C , feels like ${feelsLikeTemp.toFixed(0)} °C`;
 
                 const { daily } = body;
@@ -33,10 +43,13 @@ const setWeather = (address = "sofia") => {
                 });
                 dailyWeatherHolder.innerHTML = dailyWeatherPartial;
             });
+
+            // Handles error if response body is empty
         } else {
             return response.text().then(text => {
                 searchInput.value = "";
                 searchInput.setAttribute("placeholder", text);
+                weatherInfoHTML.innerHTML = text
             });
         }
 
