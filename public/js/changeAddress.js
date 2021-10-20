@@ -5,7 +5,7 @@ const searchInput = document.querySelector(".search-click");
 const changeAddress = () => {
     searchInput.addEventListener("keyup", e => {
         if (e.key == "Enter" || e.keyCode == 13)
-            setWeather(searchInput.value);
+            setWeather(null, null, searchInput.value);
     })
 }
 

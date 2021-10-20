@@ -97,6 +97,10 @@ header {
   padding-left: 50px;
 }
 
+#find-my-location {
+  padding-top: 1em;
+}
+
 #dailyWeatherHolder {
   -webkit-animation: fadeInAnimation ease 3s;
           animation: fadeInAnimation ease 3s;

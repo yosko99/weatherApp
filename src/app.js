@@ -21,8 +21,8 @@ app.get("", (req, res) => {
 })
 
 app.get("/weather", (req, res) => {
-    if (req.query.address) {
-        getWeather(req.query.address, (error, response) => {
+    if (req.query.address || req.query.lon) {
+        getWeather(req.query.lon, req.query.lat, req.query.address, (error, response) => {
             if (error != null) return res.send(error);
             return res.send(response)
         })
